@@ -25,7 +25,7 @@ public class Main {
 		boolean x = true;
 		int numeroconsulta = 0;
 		int dni = 0;
-		int option = 0;
+		String option = "";
 		
 		
 		System.out.print("\n  --- CLINICA GONZALO ---"+
@@ -39,17 +39,20 @@ public class Main {
 		
 		case 1: 
 			
+			
 			// PREGUNTAMOS AL USUARIO LOS DATOS NECESARIOS 
 			
-			// SINO METE UN DATO VALIDO, ENTRA EN BUCLE HASTA QUE SE VALIDO (ASI EN TODO EL PROGRAMA)
+			// SINO METE UN DATO VALIDO, ENTRA EN BUCLE HASTA QUE SE VALIDO (ASI EN  EL PROGRAMA)
 			
 				do {
 	
 					// TIPO DE CONSULTA
 					
 					System.out.print("\n  >>> INTRODUCE EL TIPO DE CONSULTA (REVISION / TRATAMIENTO): ");
+					
+					option = sc.next().toUpperCase();
 	
-					switch (sc.nextLine().toUpperCase()) {
+					switch (option) {
 	
 					case "REVISION":
 						tipoconsulta = TipoConsulta.REVISION;
@@ -63,8 +66,7 @@ public class Main {
 	
 					default:
 						
-					
-						System.err.println("  !!! DATO INTRODUCIDO INCORRECTO");
+						System.err.println("\n  !!! DATO INTRODUCIDO INCORRECTO");
 						break;
 	
 					}
@@ -72,7 +74,7 @@ public class Main {
 				} while (x == true);
 				
 				
-			
+	
 	
 				x = true;
 	
@@ -162,7 +164,7 @@ public class Main {
 		
 		
 		
-		revision[numeroconsulta].reservarCita(dni, horario, numeroconsulta);
+	revision[numeroconsulta].reservarCita(dni, horario, numeroconsulta);
 		
 
 	}
