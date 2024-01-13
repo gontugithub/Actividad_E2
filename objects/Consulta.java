@@ -10,7 +10,9 @@ public class Consulta {
 	private int numeroidentificacion;
 	private TipoConsulta tipo;
 	private String nombremedico;
-	private int[] huecosdia = new int[10];
+	private int[] huecosdia = new int[5];
+	private int[] huecostarde = new int[10];
+	
 	public int[] getHuecosdia() {
 		return huecosdia;
 	}
@@ -31,7 +33,7 @@ public class Consulta {
 	}
 
 
-	private int[] huecostarde = new int[10];
+
 	
 	public Consulta() {
 		
@@ -46,7 +48,10 @@ public class Consulta {
 	
 	public void reservarCita(int dni,Horario horario,int hueco) {
 		
-		if (hueco <= huecosdia.length && hueco >= 1) {
+		boolean i = true;
+		
+		
+		do {
 			
 			switch (horario) {
 			
@@ -54,28 +59,40 @@ public class Consulta {
 				
 				if (huecosdia[hueco] == 0) {
 					huecosdia[hueco] = dni;
+					System.out.println(Arrays.toString(huecosdia));
+					i = false;
+					
 				} else {
-					System.out.println("HUECO INTRODUCIDO OCUPADO");
-					menu();
+					System.err.println("   HUECO INTRODUCIDO OCUPADO \n");
+					System.out.println(Arrays.toString(huecosdia));
+				
 				}
 				break;
 			case TARDE:
 				
 				if (huecostarde[hueco] == 0) {
 					huecostarde[hueco] = dni;
+					System.out.println(Arrays.toString(huecostarde));
+					i = false;
 				} else {
-					System.out.println("HUECO INTRODUCIDO OCUPADO");
-					menu();
+					System.err.println("HUECO INTRODUCIDO OCUPADO");
+					System.out.println(Arrays.toString(huecostarde));
+					
 				}
 				
 				break;
 		
 			}
-		} else {
-			
-			System.out.println("HUECO INTRODUCIDO INCORRECTO");
-			menu();
-		}
+		} while (i == true);
+	
+	}
+	public void consultarCita(int dni) {
+		
+		
+		
+		
+		
+	}
 		
 		
 		
@@ -88,4 +105,4 @@ public class Consulta {
 	
 	
 
-}
+

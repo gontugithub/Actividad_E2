@@ -19,18 +19,26 @@ public class Main {
 
 		Consulta [] revision = { new Consulta(), new Consulta(), new Consulta(), new Consulta(), new Consulta() };
 		Consulta [] tratamiento = { new Consulta(), new Consulta(), new Consulta(), new Consulta(),new Consulta() };
+		
+		
 
-		TipoConsulta tipoconsulta;
+		TipoConsulta tipoconsulta = null;
 		Horario horario = null;
 		boolean x = true;
 		int numeroconsulta = 0;
 		int dni = 0;
-		String option = "";
+		int hueco = 0;
+		int x2 = 1;
+
 		
+		do {
 		
+		System.out.print("\n   >>> INTRODUCE LOS NUMEROS DEL DNI: ");
+		dni = sc.nextInt();
 		System.out.print("\n  --- CLINICA GONZALO ---"+
 				"\n\n   -1 SOLICITAR UNA CITA"+
 				"\n   -2 CAMBIAR UNA CITA"+
+				"\n   -3 MIS DATOS"+
 				"\n\n  >> ");
 		
 		switch (sc.nextInt()) {
@@ -49,10 +57,8 @@ public class Main {
 					// TIPO DE CONSULTA
 					
 					System.out.print("\n  >>> INTRODUCE EL TIPO DE CONSULTA (REVISION / TRATAMIENTO): ");
-					
-					option = sc.next().toUpperCase();
 	
-					switch (option) {
+					switch (sc.next().toUpperCase()) {
 	
 					case "REVISION":
 						tipoconsulta = TipoConsulta.REVISION;
@@ -126,36 +132,64 @@ public class Main {
 				} while (x == true);
 				
 				do {
-	
-					System.out.print("\n  >>> INTRODUCE EL HUECO: ");
 					
-					switch (sc.next().toUpperCase()) {
+					
+					
+					
+					System.out.print("\n  >>> INTRODUCE EL HUECO (1-5): ");
+					hueco = sc.nextInt();
+					
+					
+					// QUE SOLO PUEDA METER DEL 1-5 Y LO MODIFICAMOS CON EL -- PARA QUE SE QUEDE DENTRO DEL RANGO DEL ARRAY 0-4
 	
-					case "DIA":
-						horario = Horario.DIA;
+					if (hueco >= 1 && hueco <= 5) {
+						hueco--;
 						x = false;
-						break;
 	
-					case "TARDE":
-						horario = Horario.TARDE;
-						x = false;
-						break;
-	
-					default:
-						System.err.println("\n  !!! DATO INTRODUCIDO INCORRECTO");
-						break;
+					} else {
+						System.err.println("\n  !!! HUECO INEXISTENTE");
 					}
 	
 				} while (x == true);
+				
+				
+				
+				if(tipoconsulta == TipoConsulta.REVISION) {
+					
+					revision[numeroconsulta].reservarCita(dni, horario, hueco);
+					
+					
+				} else {
+					
+					tratamiento[numeroconsulta].reservarCita(dni, horario, hueco);
+					
+				}
+				
+				
+				
+				
+				
 				break;
+				
+				
+				
+				
+				
+				
 		
 		case 2: 
+			break;
+			
+			
+			
+		case 3:
 			break;
 			
 		default:
 			
 			break;
 		}
+		}while (x2 == 1);
 		
 		
 		
@@ -164,7 +198,7 @@ public class Main {
 		
 		
 		
-	revision[numeroconsulta].reservarCita(dni, horario, numeroconsulta);
+	
 		
 
 	}
