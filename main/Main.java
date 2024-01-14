@@ -27,11 +27,12 @@ public class Main {
 		boolean x = true;
 		int numeroconsulta = 0;
 		int dni = 0;
-		int hueco = 0;
 		int x2 = 1;
 
 		
 		do {
+			
+		x = true;
 		
 		System.out.print("\n   >>> INTRODUCE LOS NUMEROS DEL DNI: ");
 		dni = sc.nextInt();
@@ -131,37 +132,15 @@ public class Main {
 	
 				} while (x == true);
 				
-				do {
-					
-					
-					
-					
-					System.out.print("\n  >>> INTRODUCE EL HUECO (1-5): ");
-					hueco = sc.nextInt();
-					
-					
-					// QUE SOLO PUEDA METER DEL 1-5 Y LO MODIFICAMOS CON EL -- PARA QUE SE QUEDE DENTRO DEL RANGO DEL ARRAY 0-4
-	
-					if (hueco >= 1 && hueco <= 5) {
-						hueco--;
-						x = false;
-	
-					} else {
-						System.err.println("\n  !!! HUECO INEXISTENTE");
-					}
-	
-				} while (x == true);
-				
-				
 				
 				if(tipoconsulta == TipoConsulta.REVISION) {
 					
-					revision[numeroconsulta].reservarCita(dni, horario, hueco);
+					revision[numeroconsulta].reservarCita(dni, horario);
 					
 					
 				} else {
 					
-					tratamiento[numeroconsulta].reservarCita(dni, horario, hueco);
+					tratamiento[numeroconsulta].reservarCita(dni, horario);
 					
 				}
 				

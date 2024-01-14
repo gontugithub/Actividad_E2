@@ -5,7 +5,8 @@ import java.util.Scanner;
 
 public class Consulta {
 	
-
+	Scanner sc = new Scanner(System.in);
+	private int hueco = 0;
 	
 	private int numeroidentificacion;
 	private TipoConsulta tipo;
@@ -46,13 +47,35 @@ public class Consulta {
 	}
 	
 	
-	public void reservarCita(int dni,Horario horario,int hueco) {
+	public void reservarCita(int dni,Horario horario) {
 		
 		boolean i = true;
+		
+		do {
 		
 		
 		do {
 			
+
+			System.out.print("\n  >>> INTRODUCE EL HUECO (1-5): ");
+			hueco = sc.nextInt();
+			
+			
+			// QUE SOLO PUEDA METER DEL 1-5 Y LO MODIFICAMOS CON EL -- PARA QUE SE QUEDE DENTRO DEL RANGO DEL ARRAY 0-4
+
+			if (hueco >= 1 && hueco <= 5) {
+				hueco--;
+				i = false;
+
+			} else {
+				System.err.println("\n  !!! HUECO INEXISTENTE");
+			}
+			
+		}while (i == true);
+		
+		
+		i = true;
+		
 			switch (horario) {
 			
 			case DIA: 
@@ -63,7 +86,7 @@ public class Consulta {
 					i = false;
 					
 				} else {
-					System.err.println("   HUECO INTRODUCIDO OCUPADO \n");
+					System.err.println("\n   HUECO INTRODUCIDO OCUPADO \n");
 					System.out.println(Arrays.toString(huecosdia));
 				
 				}
@@ -75,7 +98,7 @@ public class Consulta {
 					System.out.println(Arrays.toString(huecostarde));
 					i = false;
 				} else {
-					System.err.println("HUECO INTRODUCIDO OCUPADO");
+					System.err.println("\n   HUECO INTRODUCIDO OCUPADO");
 					System.out.println(Arrays.toString(huecostarde));
 					
 				}
