@@ -157,6 +157,9 @@ public class Main {
 				
 		
 		case 2: 
+			
+			
+			System.out.println(revision[0].consultarCita(dni));
 			break;
 			
 			

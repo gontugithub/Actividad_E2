@@ -109,7 +109,28 @@ public class Consulta {
 		} while (i == true);
 	
 	}
-	public void consultarCita(int dni) {
+	public int consultarCita(int dni) {
+		
+		int numerohueco = 0;
+		// VEMOS SI SU DNI ESTA POR EL DIA
+		
+		for (int i = 0; i < huecosdia.length; i++) {
+			
+			if (huecosdia[i] == dni) {
+				
+				// SIN ESTA VAMOS A GUARDAR EL NUMERO DEL HUECO EN *numerohueco
+				numerohueco = i+1;
+				System.out.println("TIENE CITA EN EL HUECO " + numerohueco);
+			}
+			
+			
+				
+		
+			
+		}
+		return numerohueco;
+		
+		
 		
 		
 		
